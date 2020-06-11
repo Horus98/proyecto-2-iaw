@@ -25,3 +25,5 @@ Route::get('/Ruta1', function () {
 Route::get('/Stock','CarController@index', function () {
     return view('Stock');
 })->name('Stock');
+
+Route::get('/getModels/{brandName}','CarController@getModels')->name('getModels');

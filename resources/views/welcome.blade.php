@@ -15,7 +15,7 @@
         <nav>
             <ul>
                 <li>
-                    <a href="{{ route('ruta1')}}">Consultemos acerca del stock de la concesionaria</a>
+                    <a href="{{ route('ruta1')}}"><h3>Aqui iria el log in</h3></a>
                 </li>
             </ul>
         </nav>

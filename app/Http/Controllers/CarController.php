@@ -17,6 +17,8 @@ class CarController extends Controller
         return view("Stock",compact('cars'));
     }
 
+ 
+
     private function getCarsBrand(){
         $i = 0;
         $cars = array();
@@ -27,6 +29,11 @@ class CarController extends Controller
             }
         $cars = array_unique($cars);
         return $cars;
+    }
+
+    public function getModels($brandName){
+        $models = Car::where('marca','=',$brandName)->pluck("modelo","modelo");
+        return json_encode($models);
     }
     /**
      * Show the form for creating a new resource.
