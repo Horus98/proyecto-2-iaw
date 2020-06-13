@@ -35,6 +35,12 @@ class CarController extends Controller
         $models = Car::where('marca','=',$brandName)->pluck("modelo","modelo");
         return json_encode($models);
     }
+
+    public function getCarsInfo($jsonData){
+        
+        $encode = json_encode($jsonData);
+        return $encode;
+    }
     /**
      * Show the form for creating a new resource.
      *

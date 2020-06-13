@@ -27,3 +27,5 @@ Route::get('/Stock','CarController@index', function () {
 })->name('Stock');
 
 Route::get('/getModels/{brandName}','CarController@getModels')->name('getModels');
+
+Route::get('/getCarsInfo/{jsonData}','CarController@getCarsInfo')->name('getCarsInfo');

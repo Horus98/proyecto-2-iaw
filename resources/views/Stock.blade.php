@@ -38,12 +38,12 @@
                 </div>
                 <div class="col-3">
                     <select class="form-control" id="minPrice" onchange = "showSelectedMinPrice();" >
-                        <option selected>Min Price</option>
+                        <option selected value = "0">Min Price</option>
                     </select>
                 </div>
                 <div class="col-3">
                     <select class="form-control" id="maxPrice" >
-                        <option selected>Max Price</option>
+                        <option selected value = "10000000">Max Price</option>
                     </select>
                 </div>
             </div>
@@ -51,22 +51,22 @@
             <div class="form-row">
                 <div class="col">
                     <select class="form-control" id="minYear" onchange = "showSelectedMinYear();" >
-                        <option selected>Min Year</option>
+                        <option selected value = "1935">Min Year</option>
                     </select>
                 </div>
                 <div class="col">
                     <select class="form-control" id="maxYear" >
-                        <option selected>Max Year</option>
+                        <option selected value= "2021">Max Year</option>
                     </select>
                 </div>
                 <div class="col">
                     <select class="form-control" id="minKm" onchange = "showSelectedMinKm();">
-                        <option selected>Min Km</option>
+                        <option selected value = "0">Min Km</option>
                     </select>
                 </div>
                 <div class="col">
                     <select class="form-control" id="maxKm" >
-                        <option selected>Max Km</option>
+                        <option selected value = "10000000">Max Km</option>
                     </select>
                 </div>
                 
