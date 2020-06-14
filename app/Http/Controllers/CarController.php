@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Car;
+use DB;
+
 class CarController extends Controller
 {
     /**
@@ -16,8 +18,6 @@ class CarController extends Controller
         $cars = $this->getCarsBrand();
         return view("Stock",compact('cars'));
     }
-
- 
 
     private function getCarsBrand(){
         $i = 0;
@@ -36,11 +36,20 @@ class CarController extends Controller
         return json_encode($models);
     }
 
-    public function getCarsInfo($jsonData){
+    public function getCarsInfo(){
+        $brand = request('brandCar');
+        $model = request('modelCar');
+        $year =  array(request('minYear'),request('maxYear'));
+        $km =  array(request('minKm'),request('maxKm'));
+        $price =  array(request('minPrice'),request('maxPrice'));
+        $consulta = Car::whereMarca($brand)->whereModelo($model)->whereVendido(0)->whereBetween('anio',$year)->whereBetween('kilometros',$km)->whereBetween('precio',$price)->get();
+        if($brand == "*")
+            $consulta = Car::select($brand)->whereVendido(0)->whereBetween('anio',$year)->whereBetween('kilometros',$km)->whereBetween('precio',$price)->get();
         
-        $encode = json_encode($jsonData);
-        return $encode;
+        return view("consultaBD",compact('consulta'));
     }
+
+   
     /**
      * Show the form for creating a new resource.
      *

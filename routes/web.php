@@ -28,4 +28,8 @@ Route::get('/Stock','CarController@index', function () {
 
 Route::get('/getModels/{brandName}','CarController@getModels')->name('getModels');
 
-Route::get('/getCarsInfo/{jsonData}','CarController@getCarsInfo')->name('getCarsInfo');
+Route::get('/getCarsInfo','CarController@getCarsInfo')->name('getCarsInfo');
+
+Route::get('/consulta', function () {
+    return view('consultaBD');
+})->name('consulta');

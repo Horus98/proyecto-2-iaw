@@ -19,14 +19,15 @@
     <br>
  
     <div class="container">
-        <form>
+        <form method = "GET" action = "{{route('getCarsInfo')}}"  >
+            @csrf
             <h4 class="text-center">Search car..</h4>
             <br>
             <div class="form-row">
                 <div class="col-3">
                     <select class="form-control" name = "brandCar" id="brandCar"  >
                         <option selected value = "*">Brand Car</option>
-                        @foreach($cars as $car)
+                        @foreach($cars ?? '' as $car)
                         <option value = "{{$car}}">{{ $car }}</option>
                         @endforeach
                     </select>
@@ -36,13 +37,15 @@
                         <option selected value = "*">Model Car</option>
                     </select>
                 </div>
+                
                 <div class="col-3">
-                    <select class="form-control" id="minPrice" onchange = "showSelectedMinPrice();" >
+                    <select class="form-control" id="minPrice" name="minPrice" onchange = "showSelectedMinPrice();" >
                         <option selected value = "0">Min Price</option>
                     </select>
                 </div>
+                
                 <div class="col-3">
-                    <select class="form-control" id="maxPrice" >
+                    <select class="form-control" id="maxPrice" name = "maxPrice" >
                         <option selected value = "10000000">Max Price</option>
                     </select>
                 </div>
@@ -50,68 +53,38 @@
             <br>
             <div class="form-row">
                 <div class="col">
-                    <select class="form-control" id="minYear" onchange = "showSelectedMinYear();" >
+                    <select class="form-control" id="minYear" name = "minYear" onchange = "showSelectedMinYear();" >
                         <option selected value = "1935">Min Year</option>
                     </select>
                 </div>
                 <div class="col">
-                    <select class="form-control" id="maxYear" >
+                    <select class="form-control" id="maxYear" name = "maxYear" >
                         <option selected value= "2021">Max Year</option>
                     </select>
                 </div>
                 <div class="col">
-                    <select class="form-control" id="minKm" onchange = "showSelectedMinKm();">
+                    <select class="form-control" id="minKm" name = "minKm" onchange = "showSelectedMinKm();">
                         <option selected value = "0">Min Km</option>
                     </select>
                 </div>
                 <div class="col">
-                    <select class="form-control" id="maxKm" >
+                    <select class="form-control" id="maxKm" name ="maxKm" >
                         <option selected value = "10000000">Max Km</option>
                     </select>
                 </div>
                 
             </div>
-          </form>
+            
           <br>
           <div class = "row">
             <div class = "col-4"></div>
             <div class = "col-4 text-center ">
-                <button type="button" class="btn btn-dark btn-lg btn-block" id = "searchButton" onclick = searchInDataBase();>Search</button>
+                <button class="btn btn-dark btn-lg btn-block" id = "searchButton"  >Search</button>
             </div>
           </div>
+          </form>
           <br>
-          <div class = "row">
-            <div class= "col">
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Brand</th>
-                            <th>Model</th>
-                            <th>Year</th>
-                            <th>Price</th>
-                            <th>Km</th>
-                            <th>Description</th>
-                            <th>In Sale</th>
-                            <th>Image</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Ferrari</td>
-                            <td>F40</td>
-                            <td>1998</td>
-                            <td>$200.000</td>
-                            <td>23.000</td>
-                            <td> In perfect Condition, but it is expensive, don't have A/C </td>
-                            <td>False</td>
-                            <td>Not found</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-          </div>
+          
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
