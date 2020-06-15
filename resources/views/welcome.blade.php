@@ -15,7 +15,10 @@
         <nav>
             <ul>
                 <li>
-                    <a href="{{ route('ruta1')}}"><h3>Aqui iria el log in</h3></a>
+                    <a href="{{ route('ruta1')}}"><h3>Log in empleado</h3></a>
+                </li>
+                <li>
+                    <a href="{{ route('administrador')}}"><h3>Log in administrador</h3></a>
                 </li>
             </ul>
         </nav>

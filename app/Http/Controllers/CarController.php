@@ -8,6 +8,14 @@ use DB;
 
 class CarController extends Controller
 {
+
+
+
+    public function listAllCars(){
+        $consulta = Car::all()->sortBy('id');
+        return view("listarTodosAutos",compact('consulta'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +40,7 @@ class CarController extends Controller
     }
 
     public function getModels($brandName){
-        $models = Car::where('marca','=',$brandName)->pluck("modelo","modelo");
+        $models = Car::orderBy('modelo')->where('marca','=',$brandName)->pluck("modelo","modelo");
         return json_encode($models);
     }
 
@@ -66,9 +74,21 @@ class CarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        Car::insert(
+            ['marca' => request('marca'),
+             'modelo' => request('modelo'),
+             'anio' => request('anio'),
+             'kilometros' => request('km'),
+             'precio' => request('price'),
+             'vendido' => 0,
+             'imagen' => 'no hay',
+             'descripcion' => request('descripcion')
+             ]
+        );
+        request()->session()->flash('alert-success', 'El auto fue correctamente ingresado!');
+        return redirect('/InsertarAuto');
     }
 
     /**
