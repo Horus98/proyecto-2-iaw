@@ -3,34 +3,33 @@
 @section('content')
 <br>
 <br>
-<div class = "containter-fluid">
+<div class = "container-lg">
     <div class = "row">
-        <div class = "col-2"></div>
-        <div class = "col-10">
-            <form method = "POST" action = "{{route('saveCar')}}" class="needs-validation" novalidate>
+        <div class = "col-12">
+            <form enctype="multipart/form-data" method = "POST" action = "{{route('saveCar')}}" class="needs-validation"   novalidate>
                 @csrf
                 <div class="form-row">
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-4 mb-4">
                         <label for="validationCustom01">Nombre de la Marca</label>
                         <input type="text" class="form-control" id="validationCustom01" placeholder="Marca"  name="marca" required>
                         <div class="valid-feedback">
-                            Looks good!
+                            Bien Hecho!
                         </div>
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-4 mb-4">
                         <label for="validationCustom02">Nombre del Modelo</label>
                         <input type="text" class="form-control" id="validationCustom02" placeholder="Modelo" name="modelo" required>
                         <div class="valid-feedback">
-                            Looks good!
+                            Bien Hecho!
                         </div>
                     </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="validationCustom06">Nombre Imagen</label>
+                    <div class="col-md-4 mb-4">
+                        <label for="validationCustom06">Seleccione una Imagen</label>
                         <div class="file-upload-wrapper">
-                            <input type="file" id="input-file-now" class="file-upload" name="imagen" required />
+                            <input accept="image/*" type="file" name="imagen"  >
                         </div>
                         <div class="valid-feedback">
-                            Looks good!
+                            Bien Hecho!
                         </div>
                     </div>
                 </div>
@@ -66,21 +65,26 @@
                 </div>
                 <br>
                 <div class = "form-row">
-                    <div class="col-3"></div>
-                    <div class="col-3">
+                    <div class="col-4"></div>
+                    <div class="col-4">
                         <button class="btn btn-dark btn-lg btn-block" type="submit">Guardar vehículo</button>
                     </div>
                 </div>
             </form>
-            <div class="flash-message">
-            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                @if(Session::has('alert-' . $msg))
-                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} 
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    </p>
-                @endif
-             @endforeach
-            </div> 
+                <div class = "row">
+                    <div class = "col-4"></div>
+                    <div class = "col-4">
+                        <div class="flash-message">
+                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                @if(Session::has('alert-' . $msg))
+                                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} 
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    </p>
+                                @endif
+                            @endforeach
+                        </div> 
+                    </div>
+                </div>
         </div>
     </div>
 </div>
@@ -105,5 +109,6 @@
     });
   }, false);
 })();
+
 
 </script>

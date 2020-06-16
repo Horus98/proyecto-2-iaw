@@ -74,8 +74,18 @@ class CarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request  $request)
     {
+        
+            $images = "NO HAY IMAGEN DISPONIBLE";
+            if ($request->hasFile('imagen')) {
+                $file = $request->file('imagen');
+                $images = $request->imagen->getClientOriginalName();
+                $images = time().'_'.$images; 
+                $file->move(public_path().'/images/',$images); 
+            }
+
+       
         Car::insert(
             ['marca' => request('marca'),
              'modelo' => request('modelo'),
@@ -83,10 +93,11 @@ class CarController extends Controller
              'kilometros' => request('km'),
              'precio' => request('price'),
              'vendido' => 0,
-             'imagen' => 'no hay',
+             'imagen' => '/images/'.$images,
              'descripcion' => request('descripcion')
              ]
         );
+               
         request()->session()->flash('alert-success', 'El auto fue correctamente ingresado!');
         return redirect('/InsertarAuto');
     }

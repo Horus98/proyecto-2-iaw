@@ -45,7 +45,11 @@
                                 @else
                                     <td>En venta</td>
                                 @endif
-                                <td><img id = "img" src="https://i.pinimg.com/236x/e9/f4/0b/e9f40b49ad5de0682d1411d1a3298b7f--green-lamborghini-lamborghini-cars.jpg" alt="auto"></td>
+                                @if ($c->imagen == "NO HAY IMAGEN DISPONIBLE" or $c->imagen == "No hay")
+                                    <td>NO HAY IMAGEN DISPONIBLE</td>
+                                @else
+                                    <td><img id = "img" src="{{$c->imagen}}" alt="auto"></td>
+                                @endif                              
                             </tr>
                             @endforeach
                         </tbody>
