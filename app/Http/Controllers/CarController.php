@@ -26,6 +26,11 @@ class CarController extends Controller
         $cars = $this->getCarsBrand();
         return view("Stock",compact('cars'));
     }
+    public function indexDelete()
+    {   
+        $cars = $this->getCarsBrand();
+        return view("eliminar",compact('cars'));
+    }
 
     private function getCarsBrand(){
         $i = 0;
@@ -44,6 +49,7 @@ class CarController extends Controller
         return json_encode($models);
     }
 
+
     public function getCarsInfo(){
         $brand = request('brandCar');
         $model = request('modelCar');
@@ -57,6 +63,18 @@ class CarController extends Controller
         return view("consultaBD",compact('consulta'));
     }
 
+    public function getCarsInfoEliminar(){
+        $brand = request('brandCar');
+        $model = request('modelCar');
+        $year =  array(request('minYear'),request('maxYear'));
+        $km =  array(request('minKm'),request('maxKm'));
+        $price =  array(request('minPrice'),request('maxPrice'));
+        $consulta = Car::whereMarca($brand)->whereModelo($model)->whereVendido(0)->whereBetween('anio',$year)->whereBetween('kilometros',$km)->whereBetween('precio',$price)->get();
+        if($brand == "*")
+            $consulta = Car::select($brand)->whereVendido(0)->whereBetween('anio',$year)->whereBetween('kilometros',$km)->whereBetween('precio',$price)->get();
+        
+        return view("autosEliminar",compact('consulta'));
+    }
    
     /**
      * Show the form for creating a new resource.
@@ -84,8 +102,6 @@ class CarController extends Controller
                 $images = time().'_'.$images; 
                 $file->move(public_path().'/images/',$images); 
             }
-
-       
         Car::insert(
             ['marca' => request('marca'),
              'modelo' => request('modelo'),
@@ -96,8 +112,7 @@ class CarController extends Controller
              'imagen' => '/images/'.$images,
              'descripcion' => request('descripcion')
              ]
-        );
-               
+        );          
         request()->session()->flash('alert-success', 'El auto fue correctamente ingresado!');
         return redirect('/InsertarAuto');
     }
@@ -143,7 +158,8 @@ class CarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        Car::destroy($id);
+        return redirect(route('EliminarAuto'));
     }
 }

@@ -8,4 +8,8 @@ class Car extends Model
 {
     protected $table = 'cars';
 
+    public function Sale()
+    {
+        return $this->hasOne('App\Sale');
+    }
 }

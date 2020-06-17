@@ -1,25 +1,14 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Empleado</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">Empleado</span>
-        <span class="navbar-brand mb-0 h1"><a href="/">Exit</a></span>
-    </nav>
-    <br>
+@extends('navAdministrador')
+@section('atras')
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('Autos')}}"><b> Atras</b></a>
+    </li>
+@endsection
+@section('content')
 
     <div class="container">
-        <form method = "GET" action = "{{route('getCarsInfo')}}"  >
+        <form method = "GET" action = "{{route('getCarsInfoDelete')}}"  >
             @csrf
             <h4 class="text-center">Search car..</h4>
             <br>
@@ -86,12 +75,7 @@
           <br>
          
     </div>
-    @yield('content')
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
-    <script type="text/javascript" src="{!! asset('js/app.min.js') !!}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  </body>
-</html>
+  
+
+    @endsection
+    

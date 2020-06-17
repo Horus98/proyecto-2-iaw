@@ -18,7 +18,8 @@ class CreateSalesAuto extends Migration
             $table->timestamps();
             $table->string('empleado');
             $table->date('fecha');
-            $table->foreignId('auto')->constrained('cars');
+            $table->bigInteger('auto');
+            $table->foreign('auto')->references('id')->on('cars');
         });
     }
 

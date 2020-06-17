@@ -1,5 +1,10 @@
 
 @extends('navAdministrador')
+@section('atras')
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('Autos')}}"><b> Atras</b></a>
+    </li>
+@endsection
 @section('content')
 <br>
 <br>
@@ -67,7 +72,7 @@
                 <div class = "form-row">
                     <div class="col-4"></div>
                     <div class="col-4">
-                        <button class="btn btn-dark btn-lg btn-block" type="submit">Guardar vehículo</button>
+                        <button class="btn btn-dark btn-lg btn-block" onclick=capitalizeBrandAndModel(); type="submit">Guardar vehículo</button>
                     </div>
                 </div>
             </form>
@@ -89,6 +94,8 @@
     </div>
 </div>
 @endsection
+<script type="text/javascript" src="{!! asset('js/agregarAuto.min.js') !!}"></script>
+
 
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -109,6 +116,6 @@
     });
   }, false);
 })();
-
-
 </script>
+
+

@@ -39,6 +39,13 @@ Route::get('/consulta', function () {
     return view('consultaBD');
 })->name('consulta');
 
+//Rutas admnistrador.
+
+Route::get('/administrador', function () {
+    return view('administrador');
+})->name('administrador');
+
+
 Route::get('/ListarTodosLosAutos','CarController@listAllCars', function () {
     return view('listarTodosAutos');
 })->name('listarAutos');
@@ -58,6 +65,33 @@ Route::get('/Administrador/Empleados', function () {
     return view('Empleados');
 })->name('Empleados');
 
+
+Route::get('/Administrador/Autos/Eliminar/','CarController@indexDelete',function(){
+    return view('eliminar');
+})->name('EliminarAuto');
+
+Route::get('/getCarsInfoDelete','CarController@getCarsInfoEliminar')->name('getCarsInfoDelete');
+
+Route::post('/Administrador/Autos/Eliminar/{id}','CarController@destroy')->name('Autos.Eliminar.Destroy');
+
+// Administrador Ventas.
+
 Route::get('/Administrador/Ventas', function () {
     return view('Ventas');
 })->name('Ventas');
+
+Route::get('/Administrador/Ventas/Listar','SaleController@show',function(){
+    return view('ListarVentas');
+})->name('ListarVentas');
+
+Route::get('/Administrador/Ventas/Agregar',function(){
+    return view('AgregarVenta');
+})->name('AgregarVenta');
+
+Route::get('/Administrador/Ventas/Agregar/brands','SaleController@getBrands')->name('getBrands');
+
+Route::get('/Administrador/Ventas/Agregar/ListarAutosVender','SaleController@create',function(){
+    return view('AgregarVentaListaAutos');
+})->name('AgregarVentaListaAutos');
+
+Route::post('/Administrador/Ventas/GuardarVenta/{c}','SaleController@store')->name('storeSale');
