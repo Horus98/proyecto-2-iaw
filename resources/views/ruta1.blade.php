@@ -9,31 +9,45 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
     </head>
-    <body>
+    <body> 
         <div class="container-fluid">
-            <div class = "row justify-content-center text-center">
-                    <div class = "col-12 text-aling">
-                        <h1>
-                            ESTA ES LA RUTA 1
-                        </h1>
-                    </div>
-            </div>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" >Employee</a>
-                    
+                    <a class="navbar-brand" >Empleado</a>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{ route('welcome')}}">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('Stock')}}">Consultar Stock</a>
-                        </li>
-                     
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('Stock')}}">Consultar Stock</a>
+                            </li>
                         </ul>
                     </div>
+                    <a class ="user"> Empleado: <b> {{auth()->user()->name}}</b></a>
+                    <a class="nav-link" href="{{ route('logout')}}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Log Out') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </nav>
         </div>
+
+        <div class="container">
+        <br><br><br>
+        <div class="card ">
+            <div class="card-header text-white bg-secondary ">
+                Home
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                <p>Bienvenido @auth <b> {{auth()->user()->name}}</b> @endauth! Usted se encuentra en el Home.</p>
+                <p>
+                    Para consultar el stock de un determinado auto, por favor observe en la barra de navegación,
+                    la sección consultar stock, alli podra filtrar y realizar su consulta correspondiente. Para finalizar
+                    la sesión, deberá hacer click en log out.
+                </p>
+                </blockquote>
+            </div>
+        </div>
+</div>
+
+
         
     </body>
 </html>

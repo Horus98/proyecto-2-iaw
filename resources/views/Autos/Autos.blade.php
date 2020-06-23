@@ -5,10 +5,19 @@
     <br>
     <br>
     
-    <p><h5>Ustde se encuentra en la seccion autos, aqui podra ver todos los autos que hay almacenados en la BD, mediante un click
-            al botón "Listar Todos Los Autos", si desea agregar un auto, haga click en el boton "Agregar Auto", finalmente, si desea ver 
-            los autos en stock y a su vez, si lo desea, puede eliminarlos, mediante el boton "Listar/Eliminar Autos".
-    </h5></p>
+    <div class="card ">
+        <div class="card-header text-white bg-secondary ">
+            Autos
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+            <p>Usted se encuentra en la sección <b>Autos</b>, aqui podra ver todos los autos que hay almacenados en la BD, mediante un click
+            al botón "Listar Todos Los Autos", si desea agregar uno, haga click en el botón "Agregar Auto", finalmente, si desea ver 
+            los autos en stock y a su vez, si lo desea, puede eliminarlos o editarlos, presione el botón "Información Autos".
+            </p>
+            </blockquote>
+        </div>
+    </div>
     <br><br>
     <div class = "row">
         <div class = "col-4"></div>
@@ -22,7 +31,7 @@
     <div class = "row">
         <div class = "col-4"></div>
         <div class = "col-4">
-            <a class="btn btn-danger btn-lg btn-block" href="{{route('EliminarAuto')}}" role="button">Listar/Eliminar Autos</a>
+            <a class="btn btn-primary btn-lg btn-block" href="{{route('EliminarAuto')}}" role="button">Información Autos</a>
         </div>
         <div class = "col-4"></div>
     </div>

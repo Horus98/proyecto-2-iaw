@@ -14,7 +14,7 @@ class CreateSalesAuto extends Migration
     public function up()
     {
         Schema::create('sales_auto', function (Blueprint $table) {
-            $table->id('numero');
+            $table->id('id');
             $table->timestamps();
             $table->string('empleado');
             $table->date('fecha');

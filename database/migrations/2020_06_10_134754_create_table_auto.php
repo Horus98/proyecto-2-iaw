@@ -23,7 +23,7 @@ class CreateTableAuto extends Migration
             $table->integer('precio');
             $table->integer('kilometros');
             $table->boolean('vendido');
-            $table->string('imagen');
+            $table->longText('imagen');
         });
     }
 

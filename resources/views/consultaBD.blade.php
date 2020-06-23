@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-<style type="text/css">img{width:200px;height:120px;} </style>
+<style type="text/css">.img{width:200px;height:120px;} </style>
 <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1">Empleado</span>
         <span class="navbar-brand mb-0 h1"><a href="/Stock">Realizar otra consulta</a></span>
-        <span class="navbar-brand mb-0 h1"><a href="/">Exit</a></span>
+        <span class="navbar-brand mb-0 h1"><a href={{route('ruta1')}}>Atras</a></span>
     </nav>
     <br>
     <div class = "container-fluid">
@@ -48,7 +48,7 @@
                                 @if ($c->imagen == "NO HAY IMAGEN DISPONIBLE" or $c->imagen == "No hay")
                                     <td>NO HAY IMAGEN DISPONIBLE</td>
                                 @else
-                                    <td><img id = "img" src="{{$c->imagen}}" alt="auto"></td>
+                                    <td><img class="img" src="{{$c->imagen}}" alt="auto"></td>
                                 @endif                              
                             </tr>
                             @endforeach
