@@ -31,15 +31,18 @@
          
     </div>
     @include('partials.FlashMessage')
-@endsection
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
+
+
+
+@include('partials.Scripts')
+<script type="text/javascript" src="/js/app.min.js"></script>
 <script>
 $.get( "{{route('getBrands')}}", function( data ) {
     $.each(JSON.parse(data), function(i, item) {
         $('select[name="brandCar"]').append('<option value="'+item.marca+'">'+item.marca+'</option>');   
 });
 });
-
-
 </script>
+
+@endsection

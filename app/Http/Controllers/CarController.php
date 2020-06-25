@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Car;
+use DB;
 
 class CarController extends Controller
 {
@@ -20,7 +21,8 @@ class CarController extends Controller
     }
 
     public function listAllCars(){
-        $consulta = Car::all()->sortBy('id');
+        /* $consulta = Car::all()->sortBy('id')->simplePaginate(15); */
+        $consulta = Car::orderBy('marca')->paginate(15);
         return view("Autos.listarTodosAutos",compact('consulta'));
     }
 

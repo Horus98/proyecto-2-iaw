@@ -133,7 +133,7 @@
                             <br><br>
                             <input type="text" class="form-control" id="validationCustom05" placeholder="Descripción" name="descripcion" >
                             <br><br>
-                            <input type="number" min="0" max = "10000000" class="form-control" id="validationCustom05" placeholder="Precio" name="price" >
+                            <input type="number" min="0" max = "10000000" class="form-control" id="validationCustom01" placeholder="Precio" name="price" >
                             <br><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -147,8 +147,7 @@
 
 
 @endsection
-<script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
- <script>
+@include('partials.Scripts') <script>
 $(document).ready(function() {
     $('#example').DataTable();
 } );

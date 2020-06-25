@@ -36,6 +36,7 @@
          
     </div>
   
-
+    @include('partials.Scripts')
+    <script type="text/javascript" src="/js/app.min.js"></script> 
     @endsection
     

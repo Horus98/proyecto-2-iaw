@@ -81,7 +81,8 @@
     </div>
 </div>
 @endsection
-<script type="text/javascript" src="{!! asset('js/agregarAuto.min.js') !!}"></script>
+@include('partials.Scripts')
+<script type="text/javascript" src="/js/agregarAuto.min.js"></script>
 
 
 <script>

@@ -3,7 +3,7 @@
 @extends('navAdministrador')
 @section('atras')
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('Autos')}}"><b> Atras</b></a>
+        <a class="nav-link" href="{{ route('AgregarVenta')}}"><b> Atras</b></a>
     </li>
 @endsection
 @section('content')
@@ -95,8 +95,9 @@
     </div>
 </form>     
  @endsection
- <script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
- <script>
+
+ @include('partials.Scripts')
+<script>
 $(document).ready(function() {
     $('#tabla').DataTable();
 } );

@@ -18,7 +18,7 @@
         </div>
         <div class = "row">
                 <div class= "col">
-                    <table id="tabla" class="table table-striped table-bordered" style="width:100%">
+                    <table id="tabla" class="table table-striped " style="width:100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -60,11 +60,14 @@
             </div>
     </div>
 
- @endsection
 
- <script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
- <script>
+
+  @include('partials.Scripts')
+ <!-- <script>
 $(document).ready(function() {
     $('#tabla').DataTable();
 } );
-</script>
+</script>  -->
+{{ $consulta->appends(['sort' => 'anio'])->links() }}
+
+@endsection
