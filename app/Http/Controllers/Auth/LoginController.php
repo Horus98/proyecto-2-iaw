@@ -44,7 +44,7 @@ class LoginController extends Controller
             return '/administrador';
         }
         elseif(request()->user()->rol=='Empleado'){
-            return route('ruta1');
+            return route('HomeEmpleados');
         }   
     }
 }

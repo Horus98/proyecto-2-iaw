@@ -24,7 +24,7 @@ class CarSeeder extends Seeder
                   'precio' => rand(100000, 30000000),
                   'kilometros' => rand(0, 500000),
                   'vendido' => rand(0,1),
-                  'imagen' => "No hay",
+                  'imagen' => "",
                   'descripcion' => implode(" ",$faker->vehicleProperties),
               ]);
 

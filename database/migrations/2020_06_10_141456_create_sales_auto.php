@@ -19,7 +19,7 @@ class CreateSalesAuto extends Migration
             $table->string('empleado');
             $table->date('fecha');
             $table->bigInteger('auto');
-            $table->foreign('auto')->references('id')->on('cars');
+            $table->foreign('auto')->references('id')->on('cars')->onDelete("cascade");;
         });
     }
 

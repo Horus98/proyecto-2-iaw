@@ -34,11 +34,8 @@
                                 <td>{{$v ->rol}}</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <div class="col-6 custom">
-                                            <form  action="{{route('deleteUser',$v ->id)}}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger"onclick="return confirm('Esta seguro que desea eliminar a {{$v ->name}} ?');" > Eliminar</button> 
-                                            </form>  
+                                        <div class="col-6 custom">  
+                                            <button type="button" class="btn btn-danger delete " data-toggle="modal" value = "{{$v->id}}" data-target="#deleteModal" > Eliminar</button> 
                                         </div>
                                         <div class="col-6 custom">
                                                 <button type="button" class="btn btn-info edit" data-toggle="modal" value = "{{$v->id}}" data-target="#exampleModal" > Editar</button>   
@@ -55,7 +52,7 @@
                 </div>
             </div>
     </div>
-
+    @include('partials.FlashMessage')
     <form  action="{{route('editUser')}}" method="POST">
     @csrf
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -87,7 +84,30 @@
             </div>
         </div>
     </form>
-    @include('partials.FlashMessage')
+
+    <form  action="{{route('deleteUser')}}" method="POST">
+    @csrf
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Eliminar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <p>Realmente desea Eliminar al usuario seleccionado ?</p>
+                        <input type="hidden" name = "userID" >  
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    
 
 @endsection
 
@@ -103,6 +123,14 @@ $(function () {
 
 $(document).ready(function(){
   $(".edit").click(function(){
+    var value = $(this).val();
+    $('input[name=userID]').val(value);
+  });
+});
+
+
+$(document).ready(function(){
+  $(".delete").click(function(){
     var value = $(this).val();
     $('input[name=userID]').val(value);
   });

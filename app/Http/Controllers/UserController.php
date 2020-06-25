@@ -15,7 +15,8 @@ class UserController extends Controller
         return view("Empleados.EliminarEmpleado",compact('empleados'));
    }
 
-   public function destroy($id){
+   public function destroy(){
+    $id = request('userID');
     User::destroy($id);
     request()->session()->flash('alert-success', 'Se ha eliminado al usuario!');
     return redirect()->back();

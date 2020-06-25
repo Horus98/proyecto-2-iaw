@@ -4,7 +4,7 @@
 <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1">Empleado</span>
         <span class="navbar-brand mb-0 h1"><a href="/Stock">Realizar otra consulta</a></span>
-        <span class="navbar-brand mb-0 h1"><a href={{route('ruta1')}}>Atras</a></span>
+        <span class="navbar-brand mb-0 h1"><a href={{route('HomeEmpleados')}}>Atras</a></span>
     </nav>
     <br>
     <div class = "container-fluid">

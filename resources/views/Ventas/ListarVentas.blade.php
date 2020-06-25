@@ -43,10 +43,7 @@
                                 <td>           
                                     <div class="btn-group" role="group">
                                             <div class="col-6 custom">
-                                                <form  action="{{route('deleteSale',$v->id)}}" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger"onclick="return confirm('Esta seguro que desea eliminar ');" > Eliminar</button> 
-                                                </form>  
+                                                <button type="button" class="btn btn-danger delete " data-toggle="modal" value = "{{$v->id}}" data-target="#deleteModal" > Eliminar</button>   
                                             </div>
                                             <div class="col-6 custom">                
                                                 <button type="button" class="btn btn-info edit" data-toggle="modal" value = "{{$v->id}}" data-target="#exampleModal" > Editar</button> 
@@ -86,6 +83,31 @@
             </div>
         </div>
 </form>
+
+<form  action="{{route('deleteSale')}}" method="POST">
+    @csrf
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Eliminar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <p>Realmente desea Eliminar la venta seleccionada ?</p>
+                        <input type="hidden" name = "saleID" >  
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
@@ -96,6 +118,13 @@ $(document).ready(function() {
 
 $(document).ready(function(){
   $(".edit").click(function(){
+    var value = $(this).val();
+    $('input[name=saleID]').val(value);
+  });
+});
+
+$(document).ready(function(){
+  $(".delete").click(function(){
     var value = $(this).val();
     $('input[name=saleID]').val(value);
   });

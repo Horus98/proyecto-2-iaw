@@ -54,7 +54,8 @@ class SaleController extends Controller
         return redirect()->back();
     }
 
-    public function destroy($numero){
+    public function destroy(){
+        $numero = request('saleID');
         $carId = Sale::find($numero)->auto;
         $car = Car::find($carId);
         $car->vendido= 0;
