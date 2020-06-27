@@ -1,49 +1,54 @@
 @extends('navAdministrador')
 @section('atras')
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('Empleados')}}"><b> Atras</b></a>
+        <a class="nav-link" href="{{ route('Ventas')}}"><b> Atras</b></a>
     </li>
 @endsection
 @section('content')
 <div class = "container-fluid">  
         <div id = "alert" class="alert alert-success fade show" role="alert">
-           Los Empleados encontradas son los siguientes:
+           Las ventas encontradas son las siguientes:
             <button type="button" id= "close" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
+        @include('partials.FlashMessage')
         <div class = "row">
                 <div class= "col">
-                    <table id="example" class="table table-striped table-bordered  text-center" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID Empleado</th>
-                                <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Rol</th>
+                                <th>Numero Venta</th>
+                                <th>Empleado</th>
+                                <th>Fecha</th>
+                                <th>ID Auto</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Precio</th>
+                                <th>Imagen</th>
                                 <th>Edition</th>
-                                <th>Api_token</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($empleados as $v)
+                            @foreach($ventas as $v)
                             <tr>
-                                <td>{{$v ->id}}</td>
-                                <td>{{$v ->name}}</td>
-                                <td>{{$v ->email}}</td>
-                                <td>{{$v ->rol}}</td>
-                                <td>
+                                <td>{{$v->id}}</td>
+                                <td>{{$v->empleado}}</td>
+                                <td>{{$v->fecha}}</td>
+                                <td>{{$v->auto}}</td>
+                                <td>{{$v->car->marca}}</td>
+                                <td>{{$v->car->modelo}}</td>
+                                <td>$ {{number_format($v->car->precio,0,0,".")}}</td>
+                                <td><img src="{{($v->car)->imagen}}" alt="imagen del auto no disponible"></td>
+                                <td>           
                                     <div class="btn-group" role="group">
-                                        <div class="col-6 custom">  
-                                            <button type="button" class="btn btn-danger delete " data-toggle="modal" value = "{{$v->id}}" data-target="#deleteModal" > Eliminar</button> 
-                                        </div>
-                                        <div class="col-6 custom">
-                                                <button type="button" class="btn btn-info edit" data-toggle="modal" value = "{{$v->id}}" data-target="#exampleModal" > Editar</button>   
-                                        </div>  
+                                            <div class="col-6 custom">
+                                                <button type="button" class="btn btn-danger delete " data-toggle="modal" value = "{{$v->id}}" data-target="#deleteModal" > Eliminar</button>   
+                                            </div>
+                                            <div class="col-6 custom">                
+                                                <button type="button" class="btn btn-info edit" data-toggle="modal" value = "{{$v->id}}" data-target="#exampleModal" > Editar</button> 
+                                            </div>  
                                     </div>
-                                </td>
-                                <td>
-                                    <button  type="button" class="btn btn-primary " data-toggle="popover" data-placement="top" title="Api Token" data-content="{{$v->api_token}}">Show Api Token</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -52,8 +57,8 @@
                 </div>
             </div>
     </div>
-    @include('partials.FlashMessage')
-    <form  action="{{route('editUser')}}" method="POST">
+
+<form  action="{{route('editSale')}}" method="POST">
     @csrf
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -66,15 +71,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name = "userID" >  
-                        <input name ="name" class="form-control" type="text" placeholder="Nombre Empleado.." >
-                        <br>              
-                        <input name ="email" class="form-control " type="email" placeholder="Email .." >                       
-                        <br>
-                        <select class="form-control" name="rol" id="rol">
-                            <option value="Administrador">Administrador</option>
-                            <option value="Empleado">Empleado</option>
-                        </select>
+                        <input type="hidden" name = "saleID" >  
+                        <input name ="name" class="form-control" type="text" placeholder="Nombre Empleado.." required>
+                        <br>                      
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -83,9 +82,9 @@
                 </div>
             </div>
         </div>
-    </form>
+</form>
 
-    <form  action="{{route('deleteUser')}}" method="POST">
+<form  action="{{route('deleteSale')}}" method="POST">
     @csrf
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -97,8 +96,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                    <p>Realmente desea Eliminar al usuario seleccionado ?</p>
-                        <input type="hidden" name = "userID" >  
+                    <p>Realmente desea Eliminar la venta seleccionada ?</p>
+                        <input type="hidden" name = "saleID" >  
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -107,34 +106,28 @@
             </div>
         </div>
     </form>
-    
+
 
 @endsection
-
 @include('partials.Scripts')
  <script>
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
-
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
 
 $(document).ready(function(){
   $(".edit").click(function(){
     var value = $(this).val();
-    $('input[name=userID]').val(value);
+    $('input[name=saleID]').val(value);
   });
 });
-
 
 $(document).ready(function(){
   $(".delete").click(function(){
     var value = $(this).val();
-    $('input[name=userID]').val(value);
+    $('input[name=saleID]').val(value);
   });
 });
 
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
 
 </script>

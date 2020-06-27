@@ -13,7 +13,7 @@
                 
                 <div class="col-3">
                     <select class="form-control" id="maxPrice" name = "maxPrice" >
-                        <option selected value = "10000000">Max Price</option>
+                        <option selected value = "100000000">Max Price</option>
                     </select>
                 </div>
             </div>

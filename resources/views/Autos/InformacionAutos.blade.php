@@ -57,15 +57,12 @@
                                 <td> $ {{number_format($c->precio,0,0,".")}}</td>
                                 <td>{{number_format($c->kilometros,0,0,".")}}</td>
                                 <td> {{$c->descripcion}} </td>
-                                @if ($c->vendido == 1)
-                                    <td>Vendido</td>
-                                @else
-                                    <td>En venta</td>
-                                @endif
+                                <td>En venta</td>
                                 @if ($c->imagen == "NO HAY IMAGEN DISPONIBLE" or $c->imagen == "No hay")
                                     <td>NO HAY IMAGEN DISPONIBLE</td>
                                 @else
-                                    <td><img class = "img" src="{{$c->imagen}}" alt="auto"></td>
+                                    <td>
+                                    <img class = "img" src="{{$c->imagen}}" title = "{{$c->marca}} {{$c->modelo}}" alt="auto"></td>
                                 @endif                                       
                                 <td>     
                                     <div class="btn-group" role="group">
@@ -129,11 +126,11 @@
                             <br><br>
                             <input type="number" min = "1935" max = "2021" class="form-control" id="validationCustom03" placeholder="Año" name="anio" >
                             <br><br>
-                            <input type="number" min="0" max = "9990000" class="form-control" id="validationCustom04" placeholder="Kilometros" name="km">
+                            <input type="number" min="0" max = "10000000" class="form-control" id="validationCustom04" placeholder="Kilometros" name="km">
                             <br><br>
                             <input type="text" class="form-control" id="validationCustom05" placeholder="Descripción" name="descripcion" >
                             <br><br>
-                            <input type="number" min="0" max = "10000000" class="form-control" id="validationCustom01" placeholder="Precio" name="price" >
+                            <input type="number" min="100000" max = "100000000" class="form-control" id="validationCustom01" placeholder="Precio" name="price" >
                             <br><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -148,9 +145,7 @@
 
 @endsection
 @include('partials.Scripts') <script>
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
+
 </script>
     <script>
         window.setTimeout(function() {
@@ -160,18 +155,21 @@ $(document).ready(function() {
         }, 1500);
 
 $(document).ready(function(){
-  $(".edit").click(function(){
-    var value = $(this).val();
-    $('input[name=carID]').val(value);
-  });
-});
-
-$(document).ready(function(){
   $(".delete").click(function(){
     var value = $(this).val();
     $('input[name=carID]').val(value);
   });
 });
 
+$(document).ready(function(){
+  $(".edit").click(function(){
+    var value = $(this).val();
+    $('input[name=carID]').val(value);
+  });
+});
+
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
 
 </script>

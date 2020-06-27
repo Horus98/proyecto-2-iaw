@@ -15,7 +15,7 @@ class SaleController extends Controller
     }
 
     public function showFilter(){
-        return view('Ventas.AgregarVenta');
+        return view('Ventas.FiltroVentas');
     }
 
     public function showVentas(){
@@ -25,7 +25,7 @@ class SaleController extends Controller
     public function show()
     {  
         $ventas = Sale::with('Car')->get();
-        return view('Ventas.ListarVentas',compact('ventas'));
+        return view('Ventas.InformacionVentas',compact('ventas'));
     }
 
     public function getBrands(){
@@ -44,7 +44,7 @@ class SaleController extends Controller
         if($brand == "*")
             $consulta = Car::select($brand)->whereVendido(0)->whereBetween('anio',$year)->whereBetween('kilometros',$km)->whereBetween('precio',$price)->get();
 
-        return view("Ventas.AgregarVentaListaAutos",compact('consulta'));
+        return view("Ventas.AgregarVenta",compact('consulta'));
     }
 
     public function store(){
@@ -56,12 +56,15 @@ class SaleController extends Controller
 
     public function destroy(){
         $numero = request('saleID');
-        $carId = Sale::find($numero)->auto;
+        $this->changeCarStatus(Sale::find($numero)->auto);
+        Sale::destroy($numero);   
+        return redirect()->back();
+    }
+
+    private function changeCarStatus($carId){
         $car = Car::find($carId);
         $car->vendido= 0;
         $car->save();
-        Sale::destroy($numero);   
-        return redirect()->back();
     }
 
     private function saveSale($carId){

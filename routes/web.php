@@ -39,7 +39,6 @@ Route::get('/administrador', function () {
 })->name('administrador');
 
 // Seccion Autos.
-Route::get('/ListarTodosLosAutos','CarController@listAllCars')->name('listarAutos');
 Route::get('/InsertarAuto', 'CarController@showCarForm')->name('AgregarAuto');
 Route::get('/Administrador/Autos', 'CarController@showCarsSection')->name('Autos');
 Route::get('/Administrador/Autos/Eliminar/','CarController@indexDelete')->name('EliminarAuto');

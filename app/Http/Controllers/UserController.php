@@ -12,7 +12,7 @@ class UserController extends Controller
 
    public function show(){
         $empleados = User::all();
-        return view("Empleados.EliminarEmpleado",compact('empleados'));
+        return view("Empleados.InformacionEmpleado",compact('empleados'));
    }
 
    public function destroy(){

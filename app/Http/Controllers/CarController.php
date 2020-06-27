@@ -20,12 +20,6 @@ class CarController extends Controller
         return view('Autos.AgregarAuto');
     }
 
-    public function listAllCars(){
-        /* $consulta = Car::all()->sortBy('id')->simplePaginate(15); */
-        $consulta = Car::orderBy('marca')->paginate(15);
-        return view("Autos.listarTodosAutos",compact('consulta'));
-    }
-
     public function index()
     {   
         $cars = $this->getCarsBrand();
@@ -34,24 +28,15 @@ class CarController extends Controller
     public function indexDelete()
     {   
         $cars = $this->getCarsBrand();
-        return view("Autos.eliminar",compact('cars'));
+        return view("Autos.FiltroAutos",compact('cars'));
     }
 
     private function getCarsBrand(){
-        $i = 0;
-        $cars = array();
-        $autos = Car::orderBy('marca')->get();
-            foreach($autos as $car){
-                $cars[$i] = $car->marca;
-                $i = $i + 1;
-            }
-        $cars = array_unique($cars);
-        return $cars;
+        return Car::orderBy('marca')->pluck('marca')->unique();
     }
 
     public function getModels($brandName){
-        $models = Car::orderBy('modelo')->where('marca','=',$brandName)->pluck("modelo","modelo");
-        return json_encode($models);
+        return json_encode(Car::orderBy('modelo')->where('marca','=',$brandName)->pluck("modelo","modelo"));
     }
 
     public function getCarsInfo(){
@@ -61,7 +46,7 @@ class CarController extends Controller
 
     public function getCarsInfoEliminar(){
         $consulta = $this->getCarsFromQuery();
-        return view("Autos.autosEliminar",compact('consulta'));
+        return view("Autos.InformacionAutos",compact('consulta'));
     }
 
     private function getCarsFromQuery(){
@@ -109,17 +94,14 @@ class CarController extends Controller
     }
 
     public function destroy()
-    {   $id = request('carID');
-        Car::destroy($id);
+    {   
+        Car::destroy(request('carID'));
         return redirect()->back();
     }
 
     public function update(){
         $car = Car::find(request('carID'));
-        $car->precio = (request('price')==null ) ? $car->precio : request('price');
-        $car->anio = (request('anio')==null ) ? $car->anio : request('anio');
-        $car->kilometros = (request('km')==null ) ? $car->precio : request('km');
-        $car->descripcion = (request('descripcion')==null ) ? $car->precio : request('descripcion');
+        $car = $this->changeDataCar($car);
         $car->save();
         $this->showMessage('El auto fue modificado correctamente!!');
         return redirect()->back();
@@ -127,6 +109,14 @@ class CarController extends Controller
 
     private function showMessage($msj){
         request()->session()->flash('alert-success', $msj);
+    }
+
+    private function changeDataCar($car){
+        $car->precio = (request('price')==null ) ? $car->precio : request('price');
+        $car->anio = (request('anio')==null ) ? $car->anio : request('anio');
+        $car->kilometros = (request('km')==null ) ? $car->kilometros : request('km'); 
+        $car->descripcion = (request('descripcion')==null ) ? $car->precio : request('descripcion');
+        return $car;
     }
     
 }
