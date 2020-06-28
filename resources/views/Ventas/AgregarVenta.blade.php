@@ -98,14 +98,7 @@
 
  @include('partials.Scripts')
 <script>
-$(document).ready(function() {
-    $('#tabla').DataTable();
-} );
-</script>
-
-
-
- <script>
+ 
 function validateForm() {
   var x = document.forms["agregar"]["empleado"].value;
   if (x == "" || x == null) {
@@ -120,4 +113,9 @@ $(document).ready(function(){
     $('input[name=carID]').val(value);
   });
 });
+
+$(document).ready(function() {
+    $('#tabla').DataTable();
+} );
+
 </script>
