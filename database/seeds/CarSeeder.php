@@ -14,7 +14,7 @@ class CarSeeder extends Seeder
     {       $faker = (new \Faker\Factory())::create();
             $faker->addProvider(new \Faker\Provider\Fakecar($faker));
             $autos = array('A6','amg','chevy','ferrari','hilux','lambo','mercedes','mustang','nissan','range','reno4','rolls','serie3','tt');
-            $arrays = range(0,1000);  
+            $arrays = range(0,100);  
             foreach ($arrays as $valor) {
               $brandModel = $faker->vehicleArray;  
               DB::table('cars')->insert([	            

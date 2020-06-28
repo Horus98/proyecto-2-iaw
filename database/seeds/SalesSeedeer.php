@@ -16,7 +16,7 @@ class SalesSeedeer extends Seeder
         $fechas = array("2020-12-12","2019-12-12","2018-01-01");
         $carsIDs = DB::table('cars')->pluck('id');
         $this->markCarAsSold();
-        $arrays = range(0,500);  
+        $arrays = range(0,50);  
         foreach ($arrays as $valor) {
             DB::table('sales_auto')->insert([	            
                 'fecha' => $fechas[rand(0,count($fechas)-1)],
@@ -27,7 +27,7 @@ class SalesSeedeer extends Seeder
     }
    
     private function markCarAsSold(){
-        $range = range(1,501);
+        $range = range(1,51);
         foreach ($range as $i ) {
             $car = Car::find($i);
             $car->vendido = 1;
