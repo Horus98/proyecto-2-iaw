@@ -19,9 +19,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style=" background-image:url({{url('uploads/Fondo.jpg')}})">
+<body style=" background-image:url({{url('https://images.wallpaperscraft.com/image/road_marking_trees_sky_118449_1920x1080.jpg  ')}})">
     <div id="app" >
-        <nav class="navbar navbar-expand-md navbar-dark bg-transparent   shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-transparent shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}

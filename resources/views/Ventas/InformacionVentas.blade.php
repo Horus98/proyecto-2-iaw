@@ -1,3 +1,4 @@
+
 @extends('navAdministrador')
 @section('atras')
     <li class="nav-item">
@@ -5,7 +6,7 @@
     </li>
 @endsection
 @section('content')
-<style type="text/css">.img{width:200px;height:120px;} </style>
+
 <div class = "container-fluid">  
         <div id = "alert" class="alert alert-success fade show" role="alert">
            Las ventas encontradas son las siguientes:
@@ -40,7 +41,7 @@
                                 <td>{{$v->car->marca}}</td>
                                 <td>{{$v->car->modelo}}</td>
                                 <td>$ {{number_format($v->car->precio,0,0,".")}}</td>
-                                <td><img src="{{($v->car)->imagen}}" alt="imagen del auto no disponible"></td>
+                                <td><img class = "img" src="{{($v->car)->imagen}}" width = "200px" height= "120px" alt="imagen no disponible"></td>
                                 <td>           
                                     <div class="btn-group" role="group">
                                             <div class="col-6 custom">
