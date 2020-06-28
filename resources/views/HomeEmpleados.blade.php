@@ -36,7 +36,7 @@
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                <p>Bienvenido @auth <b> {{auth()->user()->name}}</b> @endauth! Usted se encuentra en el Home.</p>
+                <p>Bienvenid@ @auth <b> {{auth()->user()->name}}</b> @endauth! Usted se encuentra en el Home.</p>
                 <p>
                     Para consultar el stock de un determinado auto, por favor observe en la barra de navegación,
                     la sección consultar stock, alli podra filtrar y realizar su consulta correspondiente. Para finalizar

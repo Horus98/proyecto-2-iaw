@@ -5,7 +5,7 @@
     </li>
 @endsection
 @section('content')
-<div class="container">
+<div class="container"><br><br>
         <form method = "GET" action = "{{route('AgregarVentaListaAutos')}}"  >
             @csrf
             <h4 class="text-center">Search car to sell..</h4>

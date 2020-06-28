@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 
-
-    <title>Administrador</title>
+    <link rel = "icon" href = "https://img.icons8.com/fluent/48/000000/car.png" type = "image/x-icon"> 
+          
+    </head>
+    <title>Concesionario</title>
   </head>
   <body>
 
