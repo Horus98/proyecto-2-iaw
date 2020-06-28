@@ -5,6 +5,7 @@
     </li>
 @endsection
 @section('content')
+<style type="text/css">.img{width:200px;height:120px;} </style>
 <div class = "container-fluid">  
         <div id = "alert" class="alert alert-success fade show" role="alert">
            Las ventas encontradas son las siguientes:
