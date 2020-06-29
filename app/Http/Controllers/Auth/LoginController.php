@@ -41,10 +41,12 @@ class LoginController extends Controller
     protected function redirectTo(){
 
         if(request()->user()->rol=='Administrador'){
-            return '/administrador';
+            return route('administrador');
         }
         elseif(request()->user()->rol=='Empleado'){
             return route('HomeEmpleados');
         }   
+        else
+            return route('login');
     }
 }

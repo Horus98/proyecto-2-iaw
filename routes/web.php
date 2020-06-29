@@ -15,14 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    return view('auth/login');
-})->name('login');
+//Route::get('/', function () { return view('auth/login'); })->name('login');
+Route::get('/', function () { return view('auth/login'); })->name('login');
 
 
-Route::get('/Empleados/Home', function () {
-    return view('HomeEmpleados');
-})->name('HomeEmpleados')->middleware('auth');
+Route::get('/Empleados/Home', 'HomeController@indexEmpleados')->name('HomeEmpleados')->middleware('auth');
 
 
 // Rutas Reestringidas al Empleado
@@ -34,9 +31,7 @@ Route::get('/getCarsInfo','CarController@getCarsInfo')->name('getCarsInfo');
 Auth::routes();
 
 Route::middleware(['auth', 'Administrador'])->group(function () {
-Route::get('/administrador', function () {
-    return view('administrador');
-})->name('administrador');
+Route::get('/administrador', 'HomeController@indexAdministrador')->name('administrador');
 
 // Seccion Autos.
 Route::get('/InsertarAuto', 'CarController@showCarForm')->name('AgregarAuto');
