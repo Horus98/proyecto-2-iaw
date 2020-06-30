@@ -21,8 +21,8 @@
     </div>
     <br><br>
     <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4">
+        <div class="col-4 "></div>
+        <div class="col-4 ">
             <a class="btn btn-success btn-lg btn-block" href="{{route('AgregarAuto')}}" role="button">
                 <svg class="bi bi-plus" width="1.5em" height="1.5em" viewBox="0 0 17 17" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">

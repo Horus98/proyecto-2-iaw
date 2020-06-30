@@ -26,7 +26,7 @@ class CarSeeder extends Seeder
 
     private function randomImage(){
         $autos = array('A6', 'amg', 'chevy', 'ferrari', 'hilux', 'lambo', 'mercedes', 'mustang', 'nissan', 'range', 'reno4', 'rolls', 'serie3', 'tt');
-        return 'uploads/' . $autos[rand(0, 13)] . '.jpg';
+        return '/uploads/' . $autos[rand(0, 13)] . '.jpg';
     }
     
     private function randomYear(){

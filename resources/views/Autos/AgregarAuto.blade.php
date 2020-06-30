@@ -7,7 +7,7 @@
 @section('content')
 <br>
 <br>
-<div class="container-lg">
+<div class="container-xl">
     <div class="row">
         <div class="col-12">
             <form enctype="multipart/form-data" method="POST" action="{{route('saveCar')}}" class="needs-validation"

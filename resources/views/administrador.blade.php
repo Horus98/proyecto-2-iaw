@@ -1,7 +1,7 @@
 @extends('navAdministrador')
 @section('content')
 
-<div class="container">
+<div class="container-xl">
 <br><br>
     <div class="card ">
         <div class="card-header text-white bg-secondary ">
