@@ -96,6 +96,7 @@ class CarController extends Controller
     {
         $srcImage = "NO HAY IMAGEN DISPONIBLE";
         if (request()->hasFile('imagen')) {
+            request()->validate(['imagen' => 'file|image|max:2500']);
             $file = file_get_contents(request()->file('imagen'));
             $imageEncoded = base64_encode($file);
             $srcImage = "data:image/;base64, " . $imageEncoded;

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //Route::get('/', function () { return view('auth/login'); })->name('login');
-Route::get('/', function () { return view('auth/login'); })->name('login');
+Route::get('/', 'HomeController@index')->name('login');
 
 
 Route::get('/Empleados/Home', 'HomeController@indexEmpleados')->name('HomeEmpleados')->middleware('auth');

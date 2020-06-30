@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Car;
+use App\Sale;
 
 class SalesSeedeer extends Seeder
 {
@@ -12,20 +13,25 @@ class SalesSeedeer extends Seeder
      */
     public function run()
     {
-        $empleados = array ("Juan","Pedro","Miguel","Matias","Rodrigo","Ernesto","Diego");
-        $fechas = array("2020-12-12","2019-12-12","2018-01-01");
         $carsIDs = DB::table('cars')->pluck('id');
         $this->markCarAsSold();
-        $arrays = range(0,50);  
-        foreach ($arrays as $valor) {
-            DB::table('sales_auto')->insert([	            
-                'fecha' => $fechas[rand(0,count($fechas)-1)],
-                'empleado' => $empleados[rand(0,count($empleados)-1)],
-                'auto' => $carsIDs[$valor],
-            ]);
+        for ($valor=0; $valor <= 50 ; $valor++) { 
+            $sale = new Sale();
+            $sale->fill(['fecha' => $this->randomDate(), 'empleado' => $this->randomEmployee(), 'auto' => $carsIDs[$valor]]);
+            $sale->save(); 
         }
     }
-   
+    
+    private function randomEmployee(){
+        $empleados = array ("Juan","Pedro","Miguel","Matias","Rodrigo","Ernesto","Diego","juanes","Fernando","Josh");
+        return $empleados[rand(0,count($empleados)-1)];
+    }
+
+    private function randomDate(){
+        $fechas = array("2020-12-12","2019-12-12","2018-01-01");
+        return $fechas[rand(0,count($fechas)-1)];
+    }
+
     private function markCarAsSold(){
         $range = range(1,51);
         foreach ($range as $i ) {
