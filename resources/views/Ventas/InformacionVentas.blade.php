@@ -112,24 +112,4 @@
 
 @endsection
 @include('partials.Scripts')
- <script>
-
-$(document).ready(function(){
-  $(".edit").click(function(){
-    var value = $(this).val();
-    $('input[name=saleID]').val(value);
-  });
-});
-
-$(document).ready(function(){
-  $(".delete").click(function(){
-    var value = $(this).val();
-    $('input[name=saleID]').val(value);
-  });
-});
-
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
-
-</script>
+<script type="text/javascript" src="/js/InformacionVentas.min.js"></script>

@@ -144,32 +144,6 @@
 
 
 @endsection
-@include('partials.Scripts') <script>
+@include('partials.Scripts')
+<script type="text/javascript" src="/js/InformacionAutos.min.js"></script>
 
-</script>
-    <script>
-        window.setTimeout(function() {
-            $("#alert").fadeTo(500, 0).slideUp(500, function(){
-            $(this).remove(); 
-            });
-        }, 1500);
-
-$(document).ready(function(){
-  $(".delete").click(function(){
-    var value = $(this).val();
-    $('input[name=carID]').val(value);
-  });
-});
-
-$(document).ready(function(){
-  $(".edit").click(function(){
-    var value = $(this).val();
-    $('input[name=carID]').val(value);
-  });
-});
-
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
-
-</script>
