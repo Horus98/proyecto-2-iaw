@@ -35,6 +35,8 @@ Y así podremos hacerlo con cualquier marca, si no existen autos de dicha marca 
 
 <img src="https://i.imgur.com/YDyk8FJ.png" alt="Uso-Postman-4" border="0">
 
+El archivo para testear la colección generada en Postman se encuentra en la raiz del proyecto, misma ubicación que el ReadMe, cuyo nombre es Proyecto-2-Horus-Moro.postman_collection.json
+
                                                                         
 
 
