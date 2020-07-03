@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "0a16f402-3a54-40b6-acef-3c73612353c3",
+		"name": "Proyecto-2-Horus-Moro",
+		"description": "Colección para proyecto 2 ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autos",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "ZuLveuypYF4KlHNUzFMljqMI6JvjyCuRgNwLiUauce42EBFi90T4P4SZFWsz",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "api_token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://proyecto-2-horus.herokuapp.com/api/ApiCar",
+					"protocol": "https",
+					"host": [
+						"proyecto-2-horus",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"ApiCar"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "ZuLveuypYF4KlHNUzFMljqMI6JvjyCuRgNwLiUauce42EBFi90T4P4SZFWsz",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Se obtienen todos los autos disponibles para vender."
+			},
+			"response": []
+		},
+		{
+			"name": "Autos de un marca",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "ZuLveuypYF4KlHNUzFMljqMI6JvjyCuRgNwLiUauce42EBFi90T4P4SZFWsz",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "api_token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://proyecto-2-horus.herokuapp.com/api/ApiCar/Marca?Marca=Aro",
+					"protocol": "https",
+					"host": [
+						"proyecto-2-horus",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"ApiCar",
+						"Marca"
+					],
+					"query": [
+						{
+							"key": "Marca",
+							"value": "Aro"
+						}
+					]
+				},
+				"description": "Se obtienen los autos en venta de una marca dada.       "
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "api_token",
+				"type": "string"
+			}
+		]
+	},
+	"protocolProfileBehavior": {}
+}

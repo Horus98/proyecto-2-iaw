@@ -1,79 +1,42 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+Mi idea es desarrollar una página para un concesionario de autos, que venda tantos nuevos como usados, en donde las entidades que figuran serían los propios autos, con su marca. ,modelo, año, km, precio, imagen del mismo, si ya fue vendido o sigue en stock, y una breve descripción. La otra entidad que se me habia ocurrido seria la de venta, que posea un auto, un número, una fecha en la cual se concretó y el empleado que vendió dicho auto.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+La idea es que haya dos tipos de usuarios, los empleados y el gerente o dueño, los primeros tendrían únicamente acceso de lectura a los autos que hay disponibles para vender, en cambio el dueño o gerente tendrían acceso de administrador de la BD, podrán tanto leer datos, agregar o eliminar según corresponda. Se encargará de registrar las ventas, los autos nuevos que haya y los que se irán vendiendo.
 
-## About Laravel
+A su vez, creería conveniente que en los autos se guarde un código o la patente misma, de modo tal que se tenga un clave única de este para poder identificarlo en la propia BD.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Resumiendo, tendríamos dos roles, empleado y gerente, el primero solo podrá ver que autos hay disponibles para la venta, con toda su información correspondiente, y el ultimo será el encargado de modificar cualquier aspecto de la BD, agregar/quitar autos y ventas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Implementación proyecto.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Finalmente el proyecto contó con dos roles, el de administrador y el de empleado. Dónde el empleado únicamente puede ver el listado de vehículos en Stock, mientras que el administrador puede ver el stock y modificar ciertos aspectos del almacenamiento de datos. Ambos tienen acceso a la API, solo deben de tener el api_token que generado automáticamente al crear el usuario. 
+Para probar dicha API, usaremos Postman de la siguiente manera:
 
-## Learning Laravel
+El usuario que utilizaremos es el llamado Administrador, con el mail proyectoWeb@laravel.com y password 123456789. Su api_token es 77qULIU7ZrRjDVp46x5WlN3YiEZDKjwg6f6CcgsSuShl6ziG7WEbSza9gNjR.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+La url de la api es la siguiente https://proyecto-2-horus.herokuapp.com/api/ApiCar 
+, y si se quiere filtrar por marca de auto es https://proyecto-2-horus.herokuapp.com/api/ApiCar/Marca .
+Para poder autenticarnos debemos ingresar a la url de la siguiente manera : https://proyecto-2-horus.herokuapp.com/api/ApiCar?api_token=YOUR-TOKEN,
+https://proyecto-2-horus.herokuapp.com/api/ApiCar/Marca?api_token=YOUR-TOKEN&Marca=YOUR-BRAND-CAR respectivamente.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Luego desde postman hacemos lo siguiente:
+<img src="https://i.imgur.com/99u8jqF.png" alt="Uso-Postman-1" border="0">
 
-## Laravel Sponsors
+Al lado de GET ponemos la url de la api, en key ponemos api_token y en value el valor de nuestro api_token, luego apretamos en send y obtenemos lo siguiente:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+<img src="https://i.imgur.com/JByBLjd.png" alt="Uso-Postman-2" border="0">
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+En body podremos observar en formato JSON lo que la API nos retornó, y en la parte superior derecha podremos observar el status de la llamada, el tiempo y el peso.
 
-## Contributing
+Para testear la otra url de la API debemos cambiar la url agregando el /Marca y agregando otro par clave valor siendo key=Marca y el valor el nombre de la marca:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<img src="https://i.imgur.com/XN9ToRL.png" alt="Uso-Postman-3" border="0">
 
-## Code of Conduct
+Y así podremos hacerlo con cualquier marca, si no existen autos de dicha marca entonces la respuesta será vacía. En caso de que no nos podemos autenticar, en ambas urls,  tendremos igual una respuesta que es la siguiente: 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<img src="https://i.imgur.com/YDyk8FJ.png" alt="Uso-Postman-4" border="0">
 
-## Security Vulnerabilities
+El archivo para testear la colección generada en Postman se encuentra en la raiz del proyecto, misma ubicación que el ReadMe, cuyo nombre es Proyecto-2-Horus-Moro.postman_collection.json
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+                                                                        
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
