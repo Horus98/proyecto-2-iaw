@@ -97,4 +97,25 @@
  @endsection
 
  @include('partials.Scripts')
- <script type="text/javascript" src="/js/AgregarVenta.min.js"></script>
+<script>
+ 
+function validateForm() {
+  var x = document.forms["agregar"]["empleado"].value;
+  if (x == "" || x == null) {
+    alert();
+    return false;
+  }
+}
+
+$(document).ready(function(){
+  $(".agregar").click(function(){
+    var value = $(this).val();
+    $('input[name=carID]').val(value);
+  });
+});
+
+$(document).ready(function() {
+    $('#tabla').DataTable();
+} );
+
+</script>

@@ -112,5 +112,28 @@
 @endsection
 
 @include('partials.Scripts')
- 
-<script type="text/javascript" src="/js/InformacionEmpleado.min.js"></script>
+ <script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+
+$(document).ready(function(){
+  $(".edit").click(function(){
+    var value = $(this).val();
+    $('input[name=userID]').val(value);
+  });
+});
+
+
+$(document).ready(function(){
+  $(".delete").click(function(){
+    var value = $(this).val();
+    $('input[name=userID]').val(value);
+  });
+});
+
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+
+</script>
