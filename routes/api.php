@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('ApiToken')->get('/ApiCar','ApiController@show');
+Route::middleware('ApiToken')->get('/ApiCar/all','ApiController@showCarsbyBrand');
+
 
 Route::middleware('ApiToken')->get('/ApiCar/Marca','ApiController@showByBrand');
 

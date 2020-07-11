@@ -18,4 +18,8 @@ class ApiController extends Controller
         return Car::orderBy('modelo')->select(SELECT)->whereMarca(request('Marca'))->whereVendido(0)->get();
     }
 
+    public function showCarsbyBrand(){
+        return Car::select('marca','modelo')->whereVendido(0)->get()->sortBy('marca')->groupBy('marca');
+    }
+
 }
