@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             'email' => 'proyectoWeb@laravel.com',
             'password' => bcrypt('123456789'),
             'rol' => 'Administrador',
-            'api_token' => Str::random(60),
+            'api_token' => 'jR3EBxetz5JKvVfPKyCDdCb38ymjHTzUJhAZTkSCOgK5FLlqYZ8x8UlCz1RR',
         ]);
     }
 }
