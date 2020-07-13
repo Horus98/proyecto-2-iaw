@@ -94,14 +94,25 @@ class CarController extends Controller
 
     private function buildImage()
     {
-        $srcImage = "NO HAY IMAGEN DISPONIBLE";
+        $name = "NO HAY IMAGEN DISPONIBLE";
+            if ($request->hasFile('imagen')) {
+                $file = $request->file('imagen');
+                $name = $request->imagen->getClientOriginalName();
+                $name = time().'_'.$name; 
+                $file->move(public_path().'/images/',$name); 
+                $name = 'http://proyecto-2-horus.herokuapp.com'.'/uploads/'.$name;
+            }
+        return $name;
+
+
+        /* $srcImage = "NO HAY IMAGEN DISPONIBLE";
         if (request()->hasFile('imagen')) {
             request()->validate(['imagen' => 'file|image|max:2500']);
             $file = file_get_contents(request()->file('imagen'));
             $imageEncoded = base64_encode($file);
             $srcImage = "data:image/;base64, " . $imageEncoded;
         }
-        return $srcImage;
+        return $srcImage; */
     }
 
     public function destroy()
