@@ -99,7 +99,7 @@ class CarController extends Controller
                 $file = $request->file('imagen');
                 $name = $request->imagen->getClientOriginalName();
                 $name = time().'_'.$name; 
-                $file->move(public_path().'/images/',$name); 
+                $file->move(public_path().'/uploads/',$name); 
                 $name = 'http://proyecto-2-horus.herokuapp.com'.'/uploads/'.$name;
             }
         return $name;
