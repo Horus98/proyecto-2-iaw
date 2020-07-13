@@ -73,12 +73,13 @@ class CarController extends Controller
 
     public function store(Request $request)
     {
-        $this->saveCar($this->buildImage());
+        //$this->saveCar($this->buildImage());
+        $this->saveCar();
         $this->showMessage('El auto fue correctamente ingresado!!!');
         return redirect()->back();
     }
 
-    private function saveCar($srcImage)
+    private function saveCar()
     {
         $car = new Car();
         $car->marca = request('marca');
@@ -87,7 +88,7 @@ class CarController extends Controller
         $car->kilometros = request('km');
         $car->precio = request('price');
         $car->vendido = 0;
-        $car->imagen = $srcImage;
+        $car->imagen = request('imagen');
         $car->descripcion = request('descripcion');
         $car->save();
     }

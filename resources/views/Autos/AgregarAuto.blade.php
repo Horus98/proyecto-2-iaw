@@ -32,10 +32,12 @@
                     </div>
                     <div class="col-md-4 mb-4">
                         <label for="validationCustom06">Seleccione una Imagen</label>
-                        <div class="custom-file">
-                            <input type="file" accept="image/*" class="custom-file-input" name="imagen"
-                                id="validationCustom06" aria-describedby="myInput" required>
-                            <label class="custom-file-label" for="myInput">Choose file</label>
+                        <!-- <div class="custom-file"> -->
+                            <!-- <input type="file" accept="image/*" class="custom-file-input" name="imagen"
+                                id="validationCustom06" aria-describedby="myInput" required> -->
+                                <input type="text" class="form-control" id="validationCustom06" placeholder="imagen"
+                            name="imagen" required>
+                            <!-- <label class="custom-file-label" for="myInput">Choose file</label> -->
                             <div class="valid-feedback"> Bien Hecho! </div>
                             <div class="invalid-feedback"> Por favor seleccione una imagen.</div>
                             @if ($errors->has('imagen'))
@@ -45,7 +47,7 @@
                                 </button>
                             </div>
                             @endif
-                        </div>
+                        <!-- </div> -->
                     </div>
                 </div>
                 <div class="form-row">
